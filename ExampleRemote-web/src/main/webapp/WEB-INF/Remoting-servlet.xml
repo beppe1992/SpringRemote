@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/util 
+            http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+ 
+
+    <bean id="mioSitoService" class="com.example.remote.impl.services.MioSitoService" />
+             
+    <!-- Http Invoker Service Declaration -->
+    <bean id="httpMioSitoService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+         
+        <!-- service represents Service Impl -->
+        <property name="service" ref="mioSitoService"/>
+        <!-- serviceInterface represents Http Service Interface which is exposed -->
+        <property name="serviceInterface" value="com.example.remote.api.services.IMioSitoService"/>
+            
+    </bean>
+     
+    <!-- Mapping configurations from URLs to request handler beans -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/IMioSitoService" >httpMioSitoService</prop>
+            </props>
+        </property>
+    </bean>
+      
+</beans>

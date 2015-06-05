@@ -13,6 +13,7 @@ public class MioSitoClient implements IMioSitoService, InitializingBean {
 
 	private IMioSitoService mioSitoService;
 
+	@Override
 	public void afterPropertiesSet() throws Exception {
 		if (clientConfiguration == null) {
 			throw new IllegalArgumentException(
@@ -23,14 +24,17 @@ public class MioSitoClient implements IMioSitoService, InitializingBean {
 				IMioSitoService.class);
 	}
 
+	@Override
 	public String registraUtente(UtenteRegistrazione utente) {
 		return mioSitoService.registraUtente(utente);
 	}
 
+	@Override
 	public boolean loginCorretta(String user, String password) {
 		return mioSitoService.loginCorretta(user, password);
 	}
 
+	@Override
 	public boolean utenteGiaRegistrato(String user) {
 		return mioSitoService.utenteGiaRegistrato(user);
 	}

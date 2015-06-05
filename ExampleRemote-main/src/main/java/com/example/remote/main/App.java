@@ -5,7 +5,7 @@ import com.example.remote.api.dto.UtenteRegistrazione;
 import com.example.remote.client.services.MioSitoClient;
 
 /**
- * Hello world!
+ * Classe a cui serve chiamare il servizio del mio sito
  *
  */
 public class App 
